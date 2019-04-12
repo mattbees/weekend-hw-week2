@@ -35,9 +35,8 @@ describe('Player', () => {
   });
 
   test('Should be able to play a card', () => {
-    player1.playCard();
-    // TODO - playCard function echos full card object to console?
-    expect(/*arg*/).toBe(/*arg*/);
+    player1.hand[0] = card4;
+    expect(player1.playCard()).toBe(card4);
   });
 
   xtest('Should be able to select a category', () => {

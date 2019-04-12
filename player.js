@@ -5,7 +5,7 @@ class Player {
   };
 
   playCard() {
-
+    return this.hand[0];
   };
 
   selectCategory() {
