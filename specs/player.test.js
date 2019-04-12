@@ -34,7 +34,8 @@ describe('Player', () => {
     expect(player2.hand.length).toBe(3);
   });
 
-  xtest('Should be able to reveal a card', () => {
+  test('Should be able to play a card', () => {
+    player1.playCard();
     // TODO - playCard function echos full card object to console?
     expect(/*arg*/).toBe(/*arg*/);
   });
