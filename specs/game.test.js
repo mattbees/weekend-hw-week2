@@ -38,12 +38,12 @@ describe('Game', () => {
     expect(game.deck.length).toBe(0);
   });
 
-  xtest('Can add the cards to player1\'s hand', () => {
+  test('Can add the cards to player1\'s hand', () => {
     game.deal();
     expect(player1.hand.length).toBe(3);
   });
 
-  xtest('Can add the cards to player2\'s hand', () => {
+  test('Can add the cards to player2\'s hand', () => {
     game.deal();
     expect(player2.hand.length).toBe(3);
   });
