@@ -68,10 +68,11 @@ describe('Game', () => {
     expect(player1.hand).toEqual([ card3, card5, card2, card1 ]);
   });
 
-  xtest('Awards game win to player who has all the cards', () => {
-    // preset winning position and card for player1
-    player1.selectCategory(/*arg*/);
-    expect(game.awardWin).toBe('Player 1 is the winner');
+  test('Awards game win to player who has all the cards', () => {
+    player1.hand = [ card1, card2, card3, card4, card5 ];
+    player2.hand = [ card6 ];
+    player1.selectCategory(2, game);
+    expect(game.winner).toBe(player1);
   });
 
 });
