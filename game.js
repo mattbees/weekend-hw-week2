@@ -27,16 +27,11 @@ class Game {
     player2.hand = cards2;
   };
 
-  // TODO: Clean up messy logic
   calcRoundWinner(inputNum) {
-    let selectedProperty = this.findProperty(inputNum);
-    if (this.player1.hand[0][selectedProperty] >
-        this.player2.hand[0][selectedProperty]) {
-      this.awardPlayer(this.player1, this.player2);
-    } else if (this.player2.hand[0][selectedProperty] >
-               this.player1.hand[0][selectedProperty]) {
-      this.awardPlayer(this.player2, this.player1);
-    } else if (this.player1.currentPlayer === 'y') {
+    const score1 = this.player1.hand[0][this.findProperty(inputNum)];
+    const score2 = this.player2.hand[0][this.findProperty(inputNum)];
+    if ((score1 > score2) ||
+       (score1 === score2 && this.player1.currentPlayer === 'y')) {
       this.awardPlayer(this.player1, this.player2);
     } else {
       this.awardPlayer(this.player2, this.player1);
