@@ -9,7 +9,7 @@ class Player {
   };
 
   selectCategory(inputNum) {
-    if ((inputNum>0) && (inputNum<5)) return inputNum-1;
+    if ((inputNum>0) && (inputNum<4)) return inputNum;
   };
 
 };
