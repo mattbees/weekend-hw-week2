@@ -40,7 +40,9 @@ describe('Player', () => {
   });
 
   test('Should be able to select a category', () => {
-    expect(player1.selectCategory(2)).toBe(2);
+    game.deal();
+    player1.selectCategory(3, game);
+    expect(player1.hand.length).toBe(4);
   });
 
 });

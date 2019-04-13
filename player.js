@@ -8,8 +8,8 @@ class Player {
     return this.hand[0];
   };
 
-  selectCategory(inputNum) {
-    if ((inputNum>0) && (inputNum<4)) return inputNum;
+  selectCategory(inputNum, game) {
+    if ((inputNum>0) && (inputNum<4)) game.calcRoundWinner(inputNum);
   };
 
 };

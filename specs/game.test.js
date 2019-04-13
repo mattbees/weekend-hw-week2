@@ -48,10 +48,9 @@ describe('Game', () => {
     expect(player2.hand.length).toBe(3);
   });
 
-  xtest('Can calculate the winner of the turn', () => {
-    // preset winning card for player1
-    // player1.playCard();
-    player1.selectCategory(/*arg*/);
+  test('Can calculate the winner of the turn', () => {
+    game.deal();
+    player1.selectCategory(3, game);
     expect(player1.hand.length).toBe(4);
   });
 

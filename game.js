@@ -19,8 +19,21 @@ class Game {
   }
 
 
-  calcWinner() {
-// TODO:
+  calcRoundWinner(inputNum) {
+    let selectedProperty = this.findProperty(inputNum);
+    if (this.player1.hand[0][selectedProperty] > this.player2.hand[0][selectedProperty]) {
+      this.player1.hand.push(this.player2.hand.shift());
+    } else {
+      this.player2.hand.push(this.player1.hand.shift());
+    };
+  };
+
+  findProperty(inputNum) {
+    switch (inputNum) {
+      case 1: return'intelligence';
+      case 2: return 'strength';
+      case 3: return 'agility'
+    };
   };
 
 };
