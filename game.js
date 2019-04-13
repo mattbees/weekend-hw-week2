@@ -8,19 +8,19 @@ class Game {
 
   deal() {
     let player1Cards = this.deck.filter((card, index) => (index % 2 === 0));
-    this.pushCardsToPlayer(player1Cards, this.player1);
     let player2Cards = this.deck.filter((card, index) => (index % 2 !== 0));
-    this.pushCardsToPlayer(player2Cards, this.player2);
+    this.pushCardsToPlayers(player1Cards, player2Cards, this.player1, this.player2);
     this.deck = [];
   };
 
-  pushCardsToPlayer(cards, player) {
-    player.hand = cards;
+  pushCardsToPlayers(cards1, cards2, player1, player2) {
+    player1.hand = cards1;
+    player2.hand = cards2;
   }
 
 
   calcWinner() {
-// TODO: 
+// TODO:
   };
 
 };

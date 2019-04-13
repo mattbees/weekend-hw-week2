@@ -39,9 +39,8 @@ describe('Player', () => {
     expect(player1.playCard()).toBe(card4);
   });
 
-  xtest('Should be able to select a category', () => {
-    // TODO - selectCategory function takes input and makes selection. See snowman solution for an idea about taking input??
-    expect(/*arg*/).toBe(/*arg*/);
+  test('Should be able to select a category', () => {
+    expect(player1.selectCategory(2)).toBe(2);
   });
 
 });

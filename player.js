@@ -8,8 +8,8 @@ class Player {
     return this.hand[0];
   };
 
-  selectCategory() {
-
+  selectCategory(inputNum) {
+    if ((inputNum>0) && (inputNum<5)) return inputNum;
   };
 
 };
