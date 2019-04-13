@@ -40,7 +40,7 @@ describe('Player', () => {
   });
 
   test('Should be able to select a category', () => {
-    expect(player1.selectCategory(2)).toBe(2);
+    expect(player1.selectCategory(2)).toBe(1);
   });
 
 });
