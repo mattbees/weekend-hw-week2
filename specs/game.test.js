@@ -50,7 +50,7 @@ describe('Game', () => {
 
   test('Can calculate the winner of the turn', () => {
     game.deal();
-    player1.selectCategory(3, game, player1, player2);
+    player1.selectCategory(3, game);
     expect(player1.hand.length).toBe(4);
   });
 
@@ -62,8 +62,10 @@ describe('Game', () => {
   });
 
   // Extension
-  xtest('Can deal the cards face down', () => {
-    // TODO - extension task?
+  test('Returns the two played cards to bottom of winner\'s hand after round', () => {
+    game.deal();
+    player1.selectCategory(3, game);
+    expect(player1.hand).toEqual([ card3, card5, card2, card1 ]);
   });
 
   xtest('Awards game win to player who has all the cards', () => {

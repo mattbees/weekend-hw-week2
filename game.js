@@ -23,13 +23,13 @@ class Game {
   calcRoundWinner(inputNum) {
     let selectedProperty = this.findProperty(inputNum);
     if (this.player1.hand[0][selectedProperty] > this.player2.hand[0][selectedProperty]) {
-      this.player1.hand.push(this.player2.hand.shift());
+      this.awardPlayer1();
     } else if (this.player2.hand[0][selectedProperty] > this.player1.hand[0][selectedProperty]) {
-      this.player2.hand.push(this.player1.hand.shift());
+      this.awardPlayer2();
     } else if (this.player1.currentPlayer === 'y') {
-      this.player1.hand.push(this.player2.hand.shift());
+      this.awardPlayer1();
     } else {
-      this.player2.hand.push(this.player1.hand.shift());
+      this.awardPlayer2();
     };
     this.clearCurrentPlayer();
   };
@@ -40,6 +40,23 @@ class Game {
       case 2: return 'strength';
       case 3: return 'agility'
     };
+  };
+
+  awardPlayer1() {
+    let newHand = this.player1.hand;
+    let playedCard = this.player1.hand.shift();
+    newHand.push(this.player2.hand.shift());
+    newHand.push(playedCard);
+    this.player1.hand = newHand;
+  };
+
+  // QUESTION: Can I avoid this repetition eg. by feeding args to a generic method?
+  awardPlayer2() {
+    let newHand = this.player2.hand;
+    let playedCard = this.player2.hand.shift();
+    newHand.push(this.player1.hand.shift());
+    newHand.push(playedCard);
+    this.player2.hand = newHand;
   };
 
   clearCurrentPlayer() {
