@@ -72,7 +72,7 @@ describe('Game', () => {
     player1.hand = [ card1, card2, card3, card4, card5 ];
     player2.hand = [ card6 ];
     player1.selectCategory(2, game);
-    expect(game.winner).toBe(player1);
+    expect(game.gameWinner).toBe(player1);
   });
 
 });

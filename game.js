@@ -4,19 +4,16 @@ class Game {
     this.deck = deck;
     this.player1 = player1;
     this.player2 = player2;
-    this._winner;
+    this._gameWinner;
   };
 
-  get winner() {
-    return this._winner;
+  get gameWinner() {
+    return this._gameWinner;
   };
 
-  set winner(player) {
-    // QUESTION: Same problem - how do I do:
-    // if (this.[player].hand.length === 6) this._winner = player;
-    if (player.hand.length === 6) this._winner = player;
+  set gameWinner(player) {
+    if (player.hand.length === 6) this._gameWinner = player;
   };
-
 
   deal() {
     let player1Cards = this.deck.filter((card, index) => (index % 2 === 0));
@@ -28,22 +25,21 @@ class Game {
   pushCardsToPlayers(cards1, cards2, player1, player2) {
     player1.hand = cards1;
     player2.hand = cards2;
-  }
-
+  };
 
   // TODO: Clean up messy logic
   calcRoundWinner(inputNum) {
     let selectedProperty = this.findProperty(inputNum);
     if (this.player1.hand[0][selectedProperty] >
         this.player2.hand[0][selectedProperty]) {
-      this.awardPlayer1();
+      this.awardPlayer(this.player1, this.player2);
     } else if (this.player2.hand[0][selectedProperty] >
                this.player1.hand[0][selectedProperty]) {
-      this.awardPlayer2();
+      this.awardPlayer(this.player2, this.player1);
     } else if (this.player1.currentPlayer === 'y') {
-      this.awardPlayer1();
+      this.awardPlayer(this.player1, this.player2);
     } else {
-      this.awardPlayer2();
+      this.awardPlayer(this.player2, this.player1);
     };
     this.clearCurrentPlayer();
   };
@@ -56,23 +52,13 @@ class Game {
     };
   };
 
-  awardPlayer1() {
-    let newHand = this.player1.hand;
-    let playedCard = this.player1.hand.shift();
-    newHand.push(this.player2.hand.shift());
+  awardPlayer(roundWinner, roundLoser) {
+    let newHand = roundWinner.hand;
+    let playedCard = roundWinner.hand.shift();
+    newHand.push(roundLoser.hand.shift());
     newHand.push(playedCard);
-    this.player1.hand = newHand;
-    this.winner = this.player1;
-  };
-
-  // QUESTION: Can I avoid this repetition eg. by feeding args to a generic method?
-  awardPlayer2() {
-    let newHand = this.player2.hand;
-    let playedCard = this.player2.hand.shift();
-    newHand.push(this.player1.hand.shift());
-    newHand.push(playedCard);
-    this.player2.hand = newHand;
-    this.winner = this.player2;
+    roundWinner.hand = newHand;
+    this.gameWinner = roundWinner;
   };
 
   clearCurrentPlayer() {
