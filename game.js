@@ -19,13 +19,19 @@ class Game {
   }
 
 
+  // TODO: Clean up messy logic
   calcRoundWinner(inputNum) {
     let selectedProperty = this.findProperty(inputNum);
     if (this.player1.hand[0][selectedProperty] > this.player2.hand[0][selectedProperty]) {
       this.player1.hand.push(this.player2.hand.shift());
+    } else if (this.player2.hand[0][selectedProperty] > this.player1.hand[0][selectedProperty]) {
+      this.player2.hand.push(this.player1.hand.shift());
+    } else if (this.player1.currentPlayer === 'y') {
+      this.player1.hand.push(this.player2.hand.shift());
     } else {
       this.player2.hand.push(this.player1.hand.shift());
     };
+    this.clearCurrentPlayer();
   };
 
   findProperty(inputNum) {
@@ -34,6 +40,11 @@ class Game {
       case 2: return 'strength';
       case 3: return 'agility'
     };
+  };
+
+  clearCurrentPlayer() {
+    this.player1.currentPlayer = '';
+    this.player2.currentPlayer = '';
   };
 
 };

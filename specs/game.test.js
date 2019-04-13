@@ -50,15 +50,15 @@ describe('Game', () => {
 
   test('Can calculate the winner of the turn', () => {
     game.deal();
-    player1.selectCategory(3, game);
+    player1.selectCategory(3, game, player1, player2);
     expect(player1.hand.length).toBe(4);
   });
 
-  xtest('Awards win to player making category selection if it\'s a draw', () => {
-    // preset drawn card for player1
-    // player1.playCard();
-    player1.selectCategory(/*arg*/);
-    expect(player1.hand.length).toBe(4);
+  test('Awards win to player making category selection if it\'s a draw', () => {
+    player1.hand = [ card2, card3, card6 ];
+    player2.hand = [ card4, card1, card5 ];
+    player2.selectCategory(1, game);
+    expect(player2.hand.length).toBe(4);
   });
 
   // Extension
