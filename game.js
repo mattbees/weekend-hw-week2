@@ -11,8 +11,8 @@ class Game {
     return this._gameWinner;
   };
 
-  set gameWinner(player) {
-    if (player.hand.length === 6) this._gameWinner = player;
+  set gameWinner(roundWinner) {
+    if (roundWinner.hand.length === 6) this._gameWinner = roundWinner;
   };
 
   deal() {
